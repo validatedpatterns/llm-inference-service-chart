@@ -1,0 +1,25 @@
+{{ template "chart.header" . }}
+
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.valuesSection" . }}
+
+## Required Secrets
+
+This chart requires that a values-secret.yaml file exists in your home directory for the pattern which is using this chart.
+
+The file should be named `values-secret-<your_pattern_dir>.yaml` and placed in your home directory (NOT in the pattern repository where it would be committed to Git). The naming convention follows the pattern: `values-secret-<pattern_directory_name>.yaml`.
+
+For example, if you have a pattern in the directory `rag-llm` locally, then this file should be located at `~/values-secret-rag-llm.yaml` and must contain at minimum a Hugging Face token for a user authenticated to use the model specified in the `model.repository` value.
+
+```yaml
+secrets:
+  - name: huggingface
+    fields:
+    - name: token
+      value: hf_xxxxxxxxxxx
+```
+
+{{ template "helm-docs.versionFooter" . }}
