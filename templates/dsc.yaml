@@ -1,0 +1,32 @@
+{{- if .Values.dsc.initialize }}
+apiVersion: datasciencecluster.opendatahub.io/v1
+kind: DataScienceCluster
+metadata:
+  name: default-dsc
+spec:
+ components:
+   kserve:
+     managementState: Managed
+     defaultDeploymentMode: {{ .Values.dsc.kserve.defaultDeploymentMode }}
+     rawDeploymentServiceConfig: {{ .Values.dsc.kserve.rawDeploymentServiceConfig }}
+     serving:
+       ingressGateway:
+         certificate:
+           secretName: knative-serving-cert
+           type: OpenshiftDefaultIngress
+       managementState: Managed
+       name: knative-serving
+---
+apiVersion: dscinitialization.opendatahub.io/v1
+kind: DSCInitialization
+metadata:
+  name: default-dsci
+spec:
+ applicationsNamespace: redhat-ods-applications
+ serviceMesh:
+   controlPlane:
+     metricsCollection: Istio
+     name: data-science-smcp
+     namespace: istio-system
+   managementState: Managed
+{{- end }}

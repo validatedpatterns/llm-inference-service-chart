@@ -28,3 +28,9 @@ model:
     mountPath: /models
   downloader:
     image: registry.access.redhat.com/ubi10/python-312-minimal:10.0
+
+dsc:
+  initialize: false
+  kserve:
+    defaultDeploymentMode: RawDeployment
+    rawDeploymentServiceConfig: Headed
