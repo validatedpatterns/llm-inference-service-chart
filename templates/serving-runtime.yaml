@@ -3,6 +3,7 @@ kind: ServingRuntime
 metadata:
   name: {{ .Values.servingRuntime.name }}
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
     openshift.io/display-name: {{ .Values.servingRuntime.name }}
   labels:
     opendatahub.io/dashboard: "true"
