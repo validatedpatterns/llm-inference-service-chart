@@ -3,6 +3,7 @@ kind: InferenceService
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
     openshift.io/display-name: {{ .Values.inferenceService.name }}
     serving.knative.openshift.io/enablePassthrough: 'true'
     sidecar.istio.io/inject: 'true'
