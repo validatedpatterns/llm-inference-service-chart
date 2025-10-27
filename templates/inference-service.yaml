@@ -59,8 +59,8 @@ spec:
                 echo "Starting download of entire repository: $REPO_ID..."
               fi
 
-              pip install huggingface_hub[cli]
-              huggingface-cli download "$REPO_ID" "$FILENAME" --local-dir "$MOUNT_PATH" --local-dir-use-symlinks False
+              pip install huggingface_hub
+              hf download "$REPO_ID" "$FILENAME" --local-dir "$MOUNT_PATH" --local-dir-use-symlinks False --token "$HF_TOKEN"
               echo "Download complete."
             fi
     model:
