@@ -36,4 +36,4 @@ dsc:
     rawDeploymentServiceConfig: Headed
 
 externalSecret:
-  enabled: true
+  create: true
