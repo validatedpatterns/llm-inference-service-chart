@@ -60,7 +60,7 @@ spec:
               fi
 
               pip install huggingface_hub
-              hf download "$REPO_ID" "$FILENAME" --local-dir "$MOUNT_PATH" --local-dir-use-symlinks False --token "$HF_TOKEN"
+              hf download "$REPO_ID" "$FILENAME" --local-dir "$MOUNT_PATH" --token "$HF_TOKEN"
               echo "Download complete."
             fi
     model:
