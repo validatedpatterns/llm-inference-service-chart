@@ -1,6 +1,6 @@
 # llm-inference-service
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 Deploys a kserve-based inference service and runtime for use on RHOAI
 
@@ -8,9 +8,10 @@ Deploys a kserve-based inference service and runtime for use on RHOAI
 
 | Key                                        | Type   | Default                                                      | Description |
 | ------------------------------------------ | ------ | ------------------------------------------------------------ | ----------- |
-| dsc.initialize                             | bool   | `false`                                                      |             |
+| dsc.initialize                             | bool   | `true`                                                       |             |
 | dsc.kserve.defaultDeploymentMode           | string | `"RawDeployment"`                                            |             |
 | dsc.kserve.rawDeploymentServiceConfig      | string | `"Headed"`                                                   |             |
+| externalSecret.enabled                     | bool   | `true`                                                       |             |
 | inferenceService.affinity                  | object | `{}`                                                         |             |
 | inferenceService.maxReplicas               | int    | `1`                                                          |             |
 | inferenceService.minReplicas               | int    | `1`                                                          |             |
@@ -47,9 +48,11 @@ secrets:
         value: hf_xxxxxxxxxxx
 ```
 
-## Bootstrap Data Science Cluster
+## Using Multiple Installations of this chart
 
-By setting `dsc.initialize` to `true`, the DataScienceCluster and DSCInitialization will be created to enable kserve in RHOAI.
+If you install this chart multiple times in the same cluster, you will want to set the value `dsc.initialize` to be `false` for all but one of the installations as these resources should only be installed one time.
+
+You also should set the value `externalSecret.enabled` to be `false` for all but one installation per-namespace as the HuggingFace-token secret should be per-namespace.
 
 ---
 
