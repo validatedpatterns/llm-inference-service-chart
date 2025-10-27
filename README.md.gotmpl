@@ -18,12 +18,14 @@ For example, if you have a pattern in the directory `rag-llm` locally, then this
 secrets:
   - name: huggingface
     fields:
-    - name: token
-      value: hf_xxxxxxxxxxx
+      - name: token
+        value: hf_xxxxxxxxxxx
 ```
 
-## Bootstrap Data Science Cluster
+## Using Multiple Installations of this chart
 
-By setting `dsc.initialize` to `true`, the DataScienceCluster and DSCInitialization will be created to enable kserve in RHOAI.
+If you install this chart multiple times in the same cluster, you will want to set the value `dsc.initialize` to be `false` for all but one of the installations as these resources should only be installed one time.
+
+You also should set the value `externalSecret.enabled` to be `false` for all but one installation per-namespace as the HuggingFace-token secret should be per-namespace.
 
 {{ template "helm-docs.versionFooter" . }}
