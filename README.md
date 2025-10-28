@@ -1,6 +1,6 @@
 # llm-inference-service
 
-![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 Deploys a kserve-based inference service and runtime for use on RHOAI
 
@@ -22,7 +22,7 @@ Deploys a kserve-based inference service and runtime for use on RHOAI
 | inferenceService.resources.requests.memory | string | `"8Gi"`                                                      |             |
 | inferenceService.tolerations               | object | `{}`                                                         |             |
 | model.downloader.image                     | string | `"registry.access.redhat.com/ubi10/python-312-minimal:10.0"` |             |
-| model.filename                             | string | `"mistral-7b-instruct-v0.2.Q5_0.gguf"`                       |             |
+| model.files[0]                             | string | `"mistral-7b-instruct-v0.2.Q5_0.gguf"`                       |             |
 | model.repository                           | string | `"TheBloke/Mistral-7B-Instruct-v0.2-GGUF"`                   |             |
 | model.storage.mountPath                    | string | `"/models"`                                                  |             |
 | servingRuntime.args[0]                     | string | `"--model"`                                                  |             |

@@ -23,7 +23,8 @@ servingRuntime:
 
 model:
   repository: TheBloke/Mistral-7B-Instruct-v0.2-GGUF
-  filename: mistral-7b-instruct-v0.2.Q5_0.gguf # An empty string downloads the entire repo
+  files:
+    - mistral-7b-instruct-v0.2.Q5_0.gguf
   storage:
     mountPath: /models
   downloader:
